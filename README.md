@@ -1,8 +1,8 @@
 # smart_lamp_app
 
-Tugas membuat aplikasi smart lamp
+## Created an IoT Based application SmartLamp
 
-## Getting Started
+### Getting Started
 
 This project is a starting point for a Flutter application.
 
