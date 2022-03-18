@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smart_lamp_app/login_ui/register.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -18,6 +19,25 @@ class LoginState extends State<Login> {
   bool isChecked = false;
   void click() {}
   void click1() {}
+
+  Route _createRouteRegister() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const Register(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
 
   void fireToast2(String message) {
     Fluttertoast.showToast(
@@ -195,8 +215,8 @@ class LoginState extends State<Login> {
                                       ),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          print('Hash tag #tag');
-                                          fireToast2("Register here Hash Tag");
+                                          Navigator.of(context)
+                                              .push(_createRouteRegister());
                                         },
                                     ),
                                   ],
