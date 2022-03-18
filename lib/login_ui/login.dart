@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return RegisterState();
+    return LoginState();
   }
 }
 
-class RegisterState extends State<Register> {
+class LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
   String name = "";
+  bool isChecked = false;
+  void click() {}
+  void click1() {}
+
   void fireToast2(String message) {
     Fluttertoast.showToast(
         msg: message,
@@ -47,7 +51,7 @@ class RegisterState extends State<Register> {
                 const Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: Text(
-                    'Register',
+                    'Login',
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
@@ -73,61 +77,25 @@ class RegisterState extends State<Register> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Here to Get',
+                              'Wellcome Back !',
                               style: TextStyle(
                                 fontSize: 30,
                                 color: Colors.blueGrey,
                               ),
                             ),
-                            const Text(
-                              'Welcomed !',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blueGrey,
-                              ),
+                            const Padding(
+                              padding: EdgeInsets.all(15),
                             ),
                             Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
+                              margin: const EdgeInsets.only(top: 7, bottom: 7),
                               child: TextFormField(
                                 decoration: const InputDecoration(
-                                    labelText: 'Enter Your Username'),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                                          .hasMatch(value)) {
-                                    return "Enter Correct Email Address";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                    labelText: 'Enter Your Email Address'),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                                          .hasMatch(value)) {
-                                    return "Enter Correct Email Address";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: const InputDecoration(
-                                  labelText: 'Enter Your Password',
+                                  labelText: 'Enter Your Username',
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty ||
-                                      RegExp(r'^[a-z A-z]+$').hasMatch(value)) {
+                                      RegExp(r'^[a-z A-z]+$')
+                                          .hasMatch(value!)) {
                                     return "Enter Correct Username";
                                   } else {
                                     return null;
@@ -136,49 +104,63 @@ class RegisterState extends State<Register> {
                               ),
                             ),
                             Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
+                              margin: const EdgeInsets.only(top: 7, bottom: 7),
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
-                                    labelText: 'Verify Your Password'),
+                                    labelText: 'Enter Your Password'),
                                 validator: (value) {
                                   if (value!.isEmpty ||
-                                      RegExp(r'^[a-z A-z]+$').hasMatch(value)) {
-                                    return "Enter Correct Username";
+                                      RegExp(r'^[a-z A-z]+$')
+                                          .hasMatch(value!)) {
+                                    return "Enter Correct Password";
                                   } else {
                                     return null;
                                   }
                                 },
                               ),
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  onPressed: click,
+                                  child: const Text(
+                                    "Forgot Password?",
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  value: isChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked = value!;
+                                    });
+                                  },
+                                ),
+                                const Text(
+                                  'Remember me',
+                                  style: TextStyle(
+                                      fontSize: 15, color: Colors.blue),
+                                )
+                              ],
+                            ),
                             Container(
-                              margin: const EdgeInsets.only(top: 30),
+                              margin: const EdgeInsets.only(top: 10),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   MaterialButton(
                                     onPressed: () {},
                                     height: 50,
-                                    minWidth: 150,
+                                    minWidth: 300,
                                     child: const Text(
                                       'Login',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    color: Colors.blue.shade400,
-                                    textColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                  ),
-                                  MaterialButton(
-                                    onPressed: () {},
-                                    height: 50,
-                                    minWidth: 150,
-                                    child: const Text(
-                                      'Next',
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -194,18 +176,18 @@ class RegisterState extends State<Register> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  top: 40, right: 30, left: 30),
+                                  top: 50, right: 30, left: 30),
                               child: RichText(
                                 textAlign: TextAlign.center,
                                 text: TextSpan(
-                                  text: 'By logging in you are agree with our ',
+                                  text: "Don't have an Account?",
                                   style: const TextStyle(
                                     fontSize: 14,
                                     color: Colors.blueGrey,
                                   ),
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: 'Term & Condition',
+                                      text: " Register here",
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 14,
@@ -214,23 +196,9 @@ class RegisterState extends State<Register> {
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
                                           print('Hash tag #tag');
-                                          fireToast2(
-                                              "Term & Conditions Hash Tag");
+                                          fireToast2("Register here Hash Tag");
                                         },
                                     ),
-                                    const TextSpan(text: ' and '),
-                                    TextSpan(
-                                        text: 'Privacy Policy',
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                            color: Colors.blue),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () {
-                                            print('Hash tag #tag');
-                                            fireToast2(
-                                                "Privacy Policy Hash Tag");
-                                          }),
                                   ],
                                 ),
                               ),

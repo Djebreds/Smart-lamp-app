@@ -1,4 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:smart_lamp_app/login_ui/login.dart';
+import 'package:smart_lamp_app/login_ui/register.dart';
+
+Route _createRouteRegister() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const Register(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createRouteLogin() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const Login(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
 
 class Masuk extends StatelessWidget {
   const Masuk({Key? key}) : super(key: key);
@@ -54,7 +92,9 @@ class Masuk extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(_createRouteLogin());
+                      },
                       height: 50,
                       minWidth: 150,
                       child: const Text(
@@ -69,7 +109,9 @@ class Masuk extends StatelessWidget {
                       ),
                     ),
                     MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(_createRouteRegister());
+                      },
                       height: 50,
                       minWidth: 150,
                       child: const Text(
