@@ -69,7 +69,7 @@ class LoginState extends State<Login> {
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(top: 30),
+                  padding: EdgeInsets.only(top: 30, bottom: 10),
                   child: Text(
                     'Login',
                     style: TextStyle(
@@ -80,150 +80,155 @@ class LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 30),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
+                  child: SingleChildScrollView(
                     child: Container(
-                      margin: const EdgeInsets.all(30),
-                      child: Form(
-                        key: formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Wellcome Back !',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blueGrey,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(15),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 7, bottom: 7),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                  labelText: 'Enter Your Username',
+                      height: MediaQuery.of(context).size.height * 0.844,
+                      margin: const EdgeInsets.only(top: 30),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                      ),
+                      child: Container(
+                        margin: const EdgeInsets.all(30),
+                        child: Form(
+                          key: formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Wellcome Back !',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.blueGrey,
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[a-z A-z]+$')
-                                          .hasMatch(value!)) {
-                                    return "Enter Correct Username";
-                                  } else {
-                                    return null;
-                                  }
-                                },
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 7, bottom: 7),
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: const InputDecoration(
-                                    labelText: 'Enter Your Password'),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[a-z A-z]+$')
-                                          .hasMatch(value!)) {
-                                    return "Enter Correct Password";
-                                  } else {
-                                    return null;
-                                  }
-                                },
+                              const Padding(
+                                padding: EdgeInsets.all(15),
                               ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                TextButton(
-                                  onPressed: click,
-                                  child: const Text(
-                                    "Forgot Password?",
-                                    style: TextStyle(color: Colors.blue),
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 7, bottom: 7),
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                    labelText: 'Enter Your Username',
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.white,
-                                  value: isChecked,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      isChecked = value!;
-                                    });
+                                  validator: (value) {
+                                    if (value!.isEmpty ||
+                                        RegExp(r'^[a-z A-z]+$')
+                                            .hasMatch(value!)) {
+                                      return "Enter Correct Username";
+                                    } else {
+                                      return null;
+                                    }
                                   },
                                 ),
-                                const Text(
-                                  'Remember me',
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.blue),
-                                )
-                              ],
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 7, bottom: 7),
+                                child: TextFormField(
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                      labelText: 'Enter Your Password'),
+                                  validator: (value) {
+                                    if (value!.isEmpty ||
+                                        RegExp(r'^[a-z A-z]+$')
+                                            .hasMatch(value!)) {
+                                      return "Enter Correct Password";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  MaterialButton(
-                                    onPressed: () {},
-                                    height: 50,
-                                    minWidth: 300,
+                                  TextButton(
+                                    onPressed: click,
                                     child: const Text(
-                                      'Login',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    color: Colors.blue.shade400,
-                                    textColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(40),
+                                      "Forgot Password?",
+                                      style: TextStyle(color: Colors.blue),
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 50, right: 30, left: 30),
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  text: "Don't have an Account?",
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.blueGrey,
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    checkColor: Colors.white,
+                                    value: isChecked,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        isChecked = value!;
+                                      });
+                                    },
                                   ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: " Register here",
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Colors.blue,
+                                  const Text(
+                                    'Remember me',
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.blue),
+                                  )
+                                ],
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    MaterialButton(
+                                      onPressed: () {},
+                                      height: 50,
+                                      minWidth: 300,
+                                      child: const Text(
+                                        'Login',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          Navigator.of(context)
-                                              .push(_createRouteRegister());
-                                        },
+                                      color: Colors.blue.shade400,
+                                      textColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 50, right: 30, left: 30),
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                    text: "Don't have an Account?",
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.blueGrey,
+                                    ),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: " Register here",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.blue,
+                                        ),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            Navigator.of(context)
+                                                .push(_createRouteRegister());
+                                          },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

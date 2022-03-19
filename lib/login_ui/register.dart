@@ -65,7 +65,7 @@ class RegisterState extends State<Register> {
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(top: 30),
+                  padding: EdgeInsets.only(top: 30, bottom: 10),
                   child: Text(
                     'Register',
                     style: TextStyle(
@@ -76,189 +76,199 @@ class RegisterState extends State<Register> {
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 30),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
+                  child: SingleChildScrollView(
                     child: Container(
-                      margin: const EdgeInsets.all(30),
-                      child: Form(
-                        key: formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Here to Get',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blueGrey,
-                              ),
-                            ),
-                            const Text(
-                              'Welcomed !',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.blueGrey,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                    labelText: 'Enter Your Username'),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                                          .hasMatch(value)) {
-                                    return "Enter Correct Email Address";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                    labelText: 'Enter Your Email Address'),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                                          .hasMatch(value)) {
-                                    return "Enter Correct Email Address";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: const InputDecoration(
-                                  labelText: 'Enter Your Password',
+                      height: MediaQuery.of(context).size.height * 0.859,
+                      margin: const EdgeInsets.only(top: 20),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                      ),
+                      child: Container(
+                        margin: const EdgeInsets.all(30),
+                        child: Form(
+                          key: formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Here to Get',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.blueGrey,
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[a-z A-z]+$').hasMatch(value)) {
-                                    return "Enter Correct Username";
-                                  } else {
-                                    return null;
-                                  }
-                                },
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 3, bottom: 3),
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: const InputDecoration(
-                                    labelText: 'Verify Your Password'),
-                                validator: (value) {
-                                  if (value!.isEmpty ||
-                                      RegExp(r'^[a-z A-z]+$').hasMatch(value)) {
-                                    return "Enter Correct Username";
-                                  } else {
-                                    return null;
-                                  }
-                                },
+                              const Text(
+                                'Welcomed !',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.blueGrey,
+                                ),
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 30),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  MaterialButton(
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .push(_createRouteLogin());
-                                    },
-                                    height: 50,
-                                    minWidth: 150,
-                                    child: const Text(
-                                      'Login',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    color: Colors.blue.shade400,
-                                    textColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                  ),
-                                  MaterialButton(
-                                    onPressed: () {},
-                                    height: 50,
-                                    minWidth: 150,
-                                    child: const Text(
-                                      'Next',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    color: Colors.blue.shade400,
-                                    textColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                  ),
-                                ],
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 3, bottom: 3),
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                      labelText: 'Enter Your Username'),
+                                  validator: (value) {
+                                    if (value!.isEmpty ||
+                                        RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                                            .hasMatch(value)) {
+                                      return "Enter Correct Email Address";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 40, right: 30, left: 30),
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  text: 'By logging in you are agree with our ',
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.blueGrey,
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 3, bottom: 3),
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                      labelText: 'Enter Your Email Address'),
+                                  validator: (value) {
+                                    if (value!.isEmpty ||
+                                        RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                                            .hasMatch(value)) {
+                                      return "Enter Correct Email Address";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 3, bottom: 3),
+                                child: TextFormField(
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Enter Your Password',
                                   ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: 'Term & Condition',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Colors.blue,
+                                  validator: (value) {
+                                    if (value!.isEmpty ||
+                                        RegExp(r'^[a-z A-z]+$')
+                                            .hasMatch(value)) {
+                                      return "Enter Correct Username";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 3, bottom: 3),
+                                child: TextFormField(
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                      labelText: 'Verify Your Password'),
+                                  validator: (value) {
+                                    if (value!.isEmpty ||
+                                        RegExp(r'^[a-z A-z]+$')
+                                            .hasMatch(value)) {
+                                      return "Enter Correct Username";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 30),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    MaterialButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .push(_createRouteLogin());
+                                      },
+                                      height: 50,
+                                      minWidth: 150,
+                                      child: const Text(
+                                        'Login',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          print('Hash tag #tag');
-                                          fireToast2(
-                                              "Term & Conditions Hash Tag");
-                                        },
+                                      color: Colors.blue.shade400,
+                                      textColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
                                     ),
-                                    const TextSpan(text: ' and '),
-                                    TextSpan(
-                                        text: 'Privacy Policy',
+                                    MaterialButton(
+                                      onPressed: () {},
+                                      height: 50,
+                                      minWidth: 150,
+                                      child: const Text(
+                                        'Next',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      color: Colors.blue.shade400,
+                                      textColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 40, right: 30, left: 30),
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                    text:
+                                        'By logging in you are agree with our ',
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.blueGrey,
+                                    ),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: 'Term & Condition',
                                         style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                            color: Colors.blue),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.blue,
+                                        ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             print('Hash tag #tag');
                                             fireToast2(
-                                                "Privacy Policy Hash Tag");
-                                          }),
-                                  ],
+                                                "Term & Conditions Hash Tag");
+                                          },
+                                      ),
+                                      const TextSpan(text: ' and '),
+                                      TextSpan(
+                                          text: 'Privacy Policy',
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                              color: Colors.blue),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () {
+                                              print('Hash tag #tag');
+                                              fireToast2(
+                                                  "Privacy Policy Hash Tag");
+                                            }),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
